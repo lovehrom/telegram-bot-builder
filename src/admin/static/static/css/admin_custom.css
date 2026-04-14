@@ -1,0 +1,468 @@
+/* Premium Dark Theme Override */
+                body { background: #0A0A0A !important; color: #FFFFFF !important; font-family: 'Segoe UI', sans-serif !important; }
+                .navbar { background: #111111 !important; border-bottom: 1px solid #27272A !important; box-shadow: none !important; }
+                .navbar-brand, .nav-link { color: #A1A1AA !important; font-weight: 500 !important; }
+                .nav-link:hover { color: #FFFFFF !important; }
+                .card { background: #111111 !important; border: 1px solid #27272A !important; box-shadow: none !important; border-radius: 12px !important; }
+                .card-header { background: #111111 !important; border-bottom: 1px solid #27272A !important; color: #FFFFFF !important; font-weight: 600 !important; }
+                .table { background: #111111 !important; color: #FFFFFF !important; }
+                .table thead th { background: #1A1A1A !important; color: #A1A1AA !important; border-bottom: 1px solid #27272A !important; font-weight: 600 !important; text-transform: uppercase !important; font-size: 0.75rem !important; }
+                .table tbody tr { border-bottom: 1px solid #27272A !important; }
+                .table tbody tr:hover { background: #1A1A1A !important; }
+                .table td, .table th { border-color: #27272A !important; color: #FFFFFF !important; padding: 12px 16px !important; }
+                .form-control { background: #1A1A1A !important; border: 1px solid #27272A !important; color: #FFFFFF !important; border-radius: 8px !important; }
+                .form-control:focus { background: #1A1A1A !important; border-color: #3B82F6 !important; color: #FFFFFF !important; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important; }
+                .btn-primary { background: #3B82F6 !important; border: none !important; border-radius: 8px !important; padding: 10px 16px !important; font-weight: 500 !important; }
+                .btn-primary:hover { background: #2563EB !important; }
+                .btn-secondary { background: #1A1A1A !important; border: 1px solid #27272A !important; color: #A1A1AA !important; border-radius: 8px !important; }
+                .btn-secondary:hover { background: #222222 !important; color: #FFFFFF !important; }
+                .breadcrumb { background: #111111 !important; border: 1px solid #27272A !important; border-radius: 8px !important; }
+                .breadcrumb-item { color: #71717A !important; }
+                .breadcrumb-item.active { color: #FFFFFF !important; }
+                /* Swagger UI overrides */
+                .swagger-ui { background: #0A0A0A !important; }
+                .swagger-ui .topbar { background: #111111 !important; }
+                .swagger-ui .information-container { background: #111111 !important; }
+                .swagger-ui .scheme-container { background: #111111 !important; border: 1px solid #27272A !important; }
+                .swagger-ui .opblock .opblock-summary { background: #111111 !important; border-color: #27272A !important; }
+                .swagger-ui .opblock .opblock-summary:hover { background: #1A1A1A !important; }
+                .swagger-ui .opblock .opblock-body { background: #111111 !important; }
+                .swagger-ui .opblock-tag { background: #111111 !important; border-bottom: 1px solid #27272A !important; }
+                .swagger-ui .opblock-tag:hover { background: #1A1A1A !important; }
+                .swagger-ui table thead tr th, .swagger-ui table thead tr td { background: #1A1A1A !important; border-color: #27272A !important; }
+                .swagger-ui table tbody tr td { background: #111111 !important; border-color: #27272A !important; color: #FFFFFF !important; }
+                .swagger-ui .model-box { background: #1A1A1A !important; border: 1px solid #27272A !important; }
+                .swagger-ui .model { color: #A1A1AA !important; }
+                .swagger-ui .parameter__name { color: #FFFFFF !important; }
+                .swagger-ui .parameter__type { color: #71717A !important; }
+                .swagger-ui .response-col_description { color: #A1A1AA !important; }
+                .swagger-ui .response-col_links { color: #A1A1AA !important; }
+                .swagger-ui .download-url-wrapper { background: #111111 !important; }
+                .swagger-ui .download-url-wrapper input { background: #1A1A1A !important; border-color: #27272A !important; color: #FFFFFF !important; }
+                .swagger-ui .info .title { color: #FFFFFF !important; }
+                .swagger-ui .info .description { color: #A1A1AA !important; }
+                .swagger-ui .btn { background: #1A1A1A !important; border-color: #27272A !important; color: #A1A1AA !important; }
+                .swagger-ui .btn:hover { background: #222222 !important; color: #FFFFFF !important; }
+                .swagger-ui .btn.execute { background: #3B82F6 !important; border-color: #3B82F6 !important; color: #FFFFFF !important; }
+                .swagger-ui .btn.execute:hover { background: #2563EB !important; }
+                .admin-nav-back { background: #111111 !important; color: #A1A1AA !important; border: 1px solid #27272A !important; font-size: 0.875rem !important; }
+                .admin-nav-back:hover { background: #1A1A1A !important; color: #FFFFFF !important; border-color: #3F3F46 !important; }
+
+/*
+ * Bot Constructor - Premium Dark Theme
+ * Inspired by Linear, Vercel, GitHub Dark
+ * 
+ * Color System:
+ * - Background: #0A0A0A
+ * - Surfaces: #111111, #1A1A1A, #222222
+ * - Text: #FFFFFF, #A1A1AA, #71717A
+ * - Accent: #3B82F6
+ * - Borders: #27272A
+ */
+
+:root {
+    /* Base colors */
+    --bg-base: #0A0A0A;
+    --bg-surface-1: #111111;
+    --bg-surface-2: #1A1A1A;
+    --bg-surface-3: #222222;
+    
+    /* Text colors */
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --text-muted: #71717A;
+    
+    /* Accent */
+    --accent-primary: #3B82F6;
+    --accent-hover: #2563EB;
+    
+    /* Borders */
+    --border-subtle: #27272A;
+    --border-default: #3F3F46;
+    
+    /* Status colors */
+    --success: #22C55E;
+    --error: #EF4444;
+    --warning: #F59E0B;
+}
+
+/* ========================================
+   SQLAdmin Premium Dark Theme
+   ======================================== */
+
+body.sqladmin,
+.sqladmin body {
+    background: var(--bg-base) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navigation Bar */
+.sqladmin .navbar,
+.navbar {
+    background: var(--bg-surface-1) !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    box-shadow: none !important;
+}
+
+.sqladmin .navbar-brand,
+.navbar-brand {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+}
+
+.sqladmin .nav-link,
+.nav-link {
+    color: var(--text-secondary) !important;
+    transition: color 0.2s;
+}
+
+.sqladmin .nav-link:hover,
+.nav-link:hover {
+    color: var(--text-primary) !important;
+}
+
+/* Main Container */
+.sqladmin .container,
+.container-fluid {
+    background: var(--bg-base) !important;
+}
+
+/* Cards */
+.sqladmin .card,
+.card {
+    background: var(--bg-surface-1) !important;
+    border: 1px solid var(--border-subtle) !important;
+    box-shadow: none !important;
+    border-radius: 12px !important;
+}
+
+.sqladmin .card-header,
+.card-header {
+    background: var(--bg-surface-1) !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600;
+}
+
+/* Tables */
+.sqladmin .table,
+.table {
+    background: var(--bg-surface-1) !important;
+    color: var(--text-primary) !important;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.sqladmin .table thead th,
+.table thead th {
+    background: var(--bg-surface-2) !important;
+    color: var(--text-secondary) !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.sqladmin .table tbody tr,
+.table tbody tr {
+    border-bottom: 1px solid var(--border-subtle) !important;
+    transition: all 0.2s;
+}
+
+.sqladmin .table tbody tr:hover,
+.table tbody tr:hover {
+    background: var(--bg-surface-2) !important;
+}
+
+.sqladmin .table td,
+.table td,
+.sqladmin .table th,
+.table th {
+    border-color: var(--border-subtle) !important;
+    color: var(--text-primary) !important;
+    padding: 12px 16px;
+}
+
+/* Forms */
+.sqladmin .form-control,
+.form-control {
+    background: var(--bg-surface-2) !important;
+    border: 1px solid var(--border-subtle) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+    padding: 10px 14px;
+    transition: all 0.2s;
+}
+
+.sqladmin .form-control:focus,
+.form-control:focus {
+    background: var(--bg-surface-2) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.sqladmin .form-control::placeholder,
+.form-control::placeholder {
+    color: var(--text-muted) !important;
+}
+
+.sqladmin .form-group label,
+.form-group label {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+/* Buttons */
+.sqladmin .btn-primary,
+.btn-primary {
+    background: var(--accent-primary) !important;
+    border: none !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+    padding: 10px 16px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.sqladmin .btn-primary:hover,
+.btn-primary:hover {
+    background: var(--accent-hover) !important;
+}
+
+.sqladmin .btn-secondary,
+.btn-secondary {
+    background: var(--bg-surface-2) !important;
+    border: 1px solid var(--border-subtle) !important;
+    color: var(--text-secondary) !important;
+    border-radius: 8px !important;
+    padding: 10px 16px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.sqladmin .btn-secondary:hover,
+.btn-secondary:hover {
+    background: var(--bg-surface-3) !important;
+    color: var(--text-primary) !important;
+}
+
+.sqladmin .btn-danger,
+.btn-danger {
+    background: var(--error) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 16px;
+    font-weight: 500;
+}
+
+.sqladmin .btn-success,
+.btn-success {
+    background: var(--success) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 16px;
+    font-weight: 500;
+}
+
+/* Pagination */
+.sqladmin .pagination .page-link,
+.pagination .page-link {
+    background: var(--bg-surface-1) !important;
+    border: 1px solid var(--border-subtle) !important;
+    color: var(--text-secondary) !important;
+    border-radius: 6px !important;
+    margin: 0 2px;
+    transition: all 0.2s;
+}
+
+.sqladmin .pagination .page-link:hover,
+.pagination .page-link:hover {
+    background: var(--bg-surface-2) !important;
+    color: var(--text-primary) !important;
+}
+
+.sqladmin .pagination .page-item.active .page-link,
+.pagination .page-item.active .page-link {
+    background: var(--accent-primary) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Alerts */
+.sqladmin .alert,
+.alert {
+    border-radius: 8px !important;
+    border: 1px solid !important;
+}
+
+.sqladmin .alert-success,
+.alert-success {
+    background: rgba(34, 197, 94, 0.1) !important;
+    border-color: rgba(34, 197, 94, 0.3) !important;
+    color: #86EFAC !important;
+}
+
+.sqladmin .alert-danger,
+.alert-danger {
+    background: rgba(239, 68, 68, 0.1) !important;
+    border-color: rgba(239, 68, 68, 0.3) !important;
+    color: #FCA5A5 !important;
+}
+
+.sqladmin .alert-warning,
+.alert-warning {
+    background: rgba(245, 158, 11, 0.1) !important;
+    border-color: rgba(245, 158, 11, 0.3) !important;
+    color: #FCD34D !important;
+}
+
+/* Badge */
+.badge-success {
+    background: rgba(34, 197, 94, 0.2);
+    color: #86EFAC;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.badge-danger {
+    background: rgba(239, 68, 68, 0.2);
+    color: #FCA5A5;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.badge-warning {
+    background: rgba(245, 158, 11, 0.2);
+    color: #FCD34D;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+/* Breadcrumbs */
+.sqladmin .breadcrumb,
+.breadcrumb {
+    background: var(--bg-surface-1) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 8px !important;
+    padding: 10px 16px;
+}
+
+.sqladmin .breadcrumb-item,
+.breadcrumb-item {
+    color: var(--text-muted) !important;
+}
+
+.sqladmin .breadcrumb-item.active,
+.breadcrumb-item.active {
+    color: var(--text-primary) !important;
+}
+
+/* Dropdown Menu */
+.sqladmin .dropdown-menu,
+.dropdown-menu {
+    background: var(--bg-surface-1) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.sqladmin .dropdown-item,
+.dropdown-item {
+    color: var(--text-secondary) !important;
+    padding: 8px 16px;
+    transition: all 0.2s;
+}
+
+.sqladmin .dropdown-item:hover,
+.dropdown-item:hover {
+    background: var(--bg-surface-2) !important;
+    color: var(--text-primary) !important;
+}
+
+/* ========================================
+   Navigation Button (Premium Style)
+   ======================================== */
+
+.admin-nav-back {
+    position: fixed !important;
+    top: 1.5rem !important;
+    left: 1.5rem !important;
+    z-index: 99999 !important;
+    background: var(--bg-surface-1) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    display: block !important;
+    transition: all 0.2s !important;
+    border: 1px solid var(--border-subtle) !important;
+}
+
+.admin-nav-back:hover {
+    background: var(--bg-surface-2) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-default) !important;
+}
+
+/* ========================================
+   Metric Cards
+   ======================================== */
+
+.metric-card {
+    background: var(--bg-surface-1);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 20px;
+    transition: all 0.2s;
+}
+
+.metric-card:hover {
+    border-color: var(--accent-primary);
+}
+
+.metric-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--accent-primary);
+    margin: 10px 0;
+}
+
+.metric-label {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+    .metric-card {
+        margin-bottom: 15px;
+    }
+
+    table {
+        font-size: 0.85em;
+    }
+    
+    .admin-nav-back {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}

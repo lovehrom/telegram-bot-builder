@@ -1,0 +1,44 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Устанавливаем системные зависимости (включая Node.js для сборки фронтенда)
+RUN apt-get update && apt-get install -y \
+    gcc \
+    postgresql-client \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Устанавливаем Node.js 20.x
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+# Копируем requirements
+COPY requirements.txt .
+
+# Устанавливаем Python зависимости
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Копируем исходный код (включая фронтенд)
+COPY src ./src
+COPY alembic.ini .
+COPY alembic ./alembic
+
+# Собираем фронтенд
+WORKDIR /app/src/admin/frontend
+RUN npm install && npm run build
+
+# Возвращаемся в /app
+WORKDIR /app
+
+# Создаем пользователя
+RUN useradd -m -u 1000 webuser && \
+    chown -R webuser:webuser /app
+USER webuser
+
+# Экспозиция порта
+EXPOSE 8000
+
+# Запуск
+CMD ["uvicorn", "src.admin.main:app", "--host", "0.0.0.0", "--port", "8000"]

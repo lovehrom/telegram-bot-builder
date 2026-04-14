@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Bot Constructor - Premium Dark Theme
+ * Inspired by Linear, Vercel, GitHub Dark
+ * 
+ * Color System:
+ * - Background: #0A0A0A
+ * - Surfaces: #111111, #1A1A1A, #222222
+ * - Text: #FFFFFF, #A1A1AA, #71717A
+ * - Accent: #3B82F6
+ * - Borders: #27272A
+ */
+
+@layer base {
+  :root {
+    /* Dark theme by default */
+    --background: 0 0% 4%;  /* #0A0A0A */
+    --foreground: 0 0% 100%;  /* #FFFFFF */
+    --card: 0 0% 7%;  /* #111111 */
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 217 91% 60%;  /* #3B82F6 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;  /* #1A1A1A */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 45%;  /* #71717A */
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 16%;  /* #27272A */
+    --input: 0 0% 10%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+    
+    /* Custom properties */
+    --bg-base: #0A0A0A;
+    --bg-surface-1: #111111;
+    --bg-surface-2: #1A1A1A;
+    --bg-surface-3: #222222;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --text-muted: #71717A;
+    --accent-primary: #3B82F6;
+    --border-subtle: #27272A;
+  }
+
+  .dark {
+    /* Same as root - dark by default */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 16%;
+    --input: 0 0% 10%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+/* ========================================
+   ReactFlow Premium Dark Theme
+   ======================================== */
+
+.react-flow {
+  background: var(--bg-base);
+}
+
+.react-flow__background {
+  background: var(--bg-base);
+}
+
+.react-flow__node {
+  cursor: grab;
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: 12px;
+  box-shadow: none;
+  transition: all 0.2s;
+}
+
+.react-flow__node:hover {
+  border-color: var(--accent-primary);
+}
+
+.react-flow__node.selected {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.react-flow__handle {
+  width: 10px;
+  height: 10px;
+  background: var(--accent-primary);
+  border: 2px solid var(--bg-surface-1);
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+  stroke: var(--text-muted);
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--accent-primary);
+}
+
+/* FlowEditor Panels */
+.flow-editor-container {
+  background: var(--bg-base);
+}
+
+.block-palette {
+  background: var(--bg-surface-1);
+  border-color: var(--border-subtle);
+}
+
+.properties-panel {
+  background: var(--bg-surface-1);
+  border-color: var(--border-subtle);
+}
+
+/* MiniMap */
+.react-flow__minimap {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+}
+
+/* Controls */
+.react-flow__controls {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.react-flow__controls-button {
+  background: var(--bg-surface-1);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 8px;
+}
+
+.react-flow__controls-button:hover {
+  background: var(--bg-surface-2);
+  color: var(--text-primary);
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+
+/* Attribution hidden */
+.react-flow__attribution {
+  display: none;
+}
+
+/* ========================================
+   Custom Scrollbars
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface-1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

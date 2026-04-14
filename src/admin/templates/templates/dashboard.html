@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Constructor Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/static/css/admin_custom.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0A0A0A;
+            margin: 0;
+            padding: 20px;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .back-button a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #111111;
+            color: #A1A1AA;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid #27272A;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .back-button a:hover {
+            background: #1A1A1A;
+        }
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .dashboard-header {
+            background: linear-gradient(135deg, #3B82F6, #2563EB);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        .dashboard-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+        .dashboard-header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .metric-card {
+            background: #111111;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #27272A;
+        }
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #3B82F6;
+            margin: 10px 0;
+        }
+        .metric-label {
+            color: #71717A;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .chart-card {
+            background: #111111;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #27272A;
+        }
+        .chart-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #27272A;
+        }
+        .funnel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .funnel-stage {
+            background: #111111;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #27272A;
+            transition: all 0.2s;
+        }
+        .funnel-stage:hover {
+            transform: translateX(5px);
+            border-color: #3B82F6;
+        }
+        .funnel-stage-name {
+            font-weight: 600;
+            color: #FFFFFF;
+            font-size: 1.1em;
+        }
+        .funnel-stage-value {
+            font-size: 1.8em;
+            color: #3B82F6;
+            font-weight: bold;
+        }
+        .funnel-stage-rate {
+            color: #71717A;
+            font-size: 0.9em;
+            background: #1A1A1A;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Фиксированная кнопка "Назад" -->
+    <div class="back-button">
+        <a href="/admin">← Вернуться</a>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h1>🤖 Bot Constructor Dashboard</h1>
+                <p>Панель управления и аналитики</p>
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="/dashboard" class="nav-link">🔄 Обновить</a>
+            </div>
+        </div>
+
+        <!-- Метрики -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Всего пользователей</div>
+                <div class="metric-value" id="total-users">-</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Оплатили</div>
+                <div class="metric-value" id="paid-users">-</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Конверсия в оплату</div>
+                <div class="metric-value" id="conversion-rate">-</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Средний балл</div>
+                <div class="metric-value" id="avg-score">-</div>
+            </div>
+        </div>
+
+        <!-- Графики -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-title">📊 Активность за последние 7 дней</div>
+                <canvas id="activityChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">📈 Проходимость уроков</div>
+                <canvas id="lessonsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Воронка -->
+        <div class="chart-card">
+            <div class="chart-title">🎯 Воронка пользователей</div>
+            <div class="funnel-container" id="funnel-container">
+                <!-- Заполняется динамически -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function loadDashboard() {
+            try {
+                const response = await fetch('/api/admin/stats/full');
+                const data = await response.json();
+
+                document.getElementById('total-users').textContent = data.users.total;
+                document.getElementById('paid-users').textContent = data.users.paid;
+                document.getElementById('conversion-rate').textContent = data.users.conversion_rate + '%';
+                document.getElementById('avg-score').textContent = data.progress.avg_score + '%';
+
+                renderFunnel(data.funnel, data.conversion_rates);
+                renderActivityChart(data.timeline);
+                renderLessonsChart(data.lesson_stats);
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                document.getElementById('funnel-container').innerHTML =
+                    '<p style="color: #EF4444;">Ошибка загрузки данных</p>';
+            }
+        }
+
+        function renderFunnel(funnelData, conversionRates) {
+            const container = document.getElementById('funnel-container');
+            const stages = [
+                { name: '👤 Зарегистрировано', value: funnelData.registered, rate: conversionRates.to_start || 100 },
+                { name: '📚 Начали обучение', value: funnelData.started, rate: conversionRates.to_paid },
+                { name: '💰 Оплатили', value: funnelData.paid, rate: conversionRates.to_quiz },
+                { name: '✅ Прошли тесты', value: funnelData.completed_quizzes, rate: conversionRates.to_completion },
+                { name: '🎓 Завершили курс', value: funnelData.completed_course, rate: 100 }
+            ];
+
+            container.innerHTML = stages.map(stage => `
+                <div class="funnel-stage">
+                    <div class="funnel-stage-name">${stage.name}</div>
+                    <div class="funnel-stage-value">${stage.value}</div>
+                    <div class="funnel-stage-rate">${stage.rate}% →</div>
+                </div>
+            `).join('');
+        }
+
+        function renderActivityChart(timeline) {
+            const ctx = document.getElementById('activityChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeline.map(t => t.date),
+                    datasets: [{
+                        label: 'Новые пользователи',
+                        data: timeline.map(t => t.new_users),
+                        borderColor: '#3B82F6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Активные пользователи',
+                        data: timeline.map(t => t.active_users),
+                        borderColor: '#60A5FA',
+                        backgroundColor: 'rgba(96, 165, 250, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#A1A1AA' } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#71717A' }, grid: { color: '#27272A' } },
+                        y: { ticks: { color: '#71717A' }, grid: { color: '#27272A' } }
+                    }
+                }
+            });
+        }
+
+        function renderLessonsChart(lessonStats) {
+            const ctx = document.getElementById('lessonsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: lessonStats.map(l => l.order_number + '. ' + l.title),
+                    datasets: [{
+                        label: 'Проходимость %',
+                        data: lessonStats.map(l => l.pass_rate),
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                        borderColor: '#3B82F6',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true, max: 100, ticks: { color: '#71717A' }, grid: { color: '#27272A' } },
+                        x: { ticks: { color: '#71717A' }, grid: { color: '#27272A' } }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        loadDashboard();
+    </script>
+</body>
+</html>

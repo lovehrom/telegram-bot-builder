@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Constructor - Панель администратора</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/admin_custom.css">
+    <style>
+        body {
+            background: #0A0A0A;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header style="background: #111111; border-bottom: 1px solid #27272A;">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold" style="color: #FFFFFF;">🤖 Bot Constructor</h1>
+                <p class="text-sm" style="color: #71717A;">Панель администратора</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/admin/tables" class="text-sm transition-colors" style="color: #A1A1AA;" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#A1A1AA'">База данных</a>
+                <a href="/admin/logout" class="px-4 py-2 rounded-lg transition-all duration-200" style="background: #1A1A1A; color: #A1A1AA; border: 1px solid #27272A;" onmouseover="this.style.background='#222222'" onmouseout="this.style.background='#1A1A1A'">
+                    Выйти
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Cards -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <h2 class="text-xl font-semibold mb-6" style="color: #FFFFFF;">Инструменты</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <!-- Dashboard -->
+            <a href="/dashboard" class="group">
+                <div class="rounded-xl p-6 transition-all duration-200" style="background: #111111; border: 1px solid #27272A;" onmouseover="this.style.borderColor='#3B82F6'" onmouseout="this.style.borderColor='#27272A'">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="p-3 rounded-lg" style="background: rgba(59, 130, 246, 0.1);">
+                            <svg class="w-6 h-6" style="color: #3B82F6;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V9a2 2 0 012-2h2a2 2 0 012 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold" style="color: #FFFFFF;">Дашборд</h3>
+                            <p class="text-sm" style="color: #71717A;">Статистика и аналитика</p>
+                        </div>
+                    </div>
+                    <p class="text-sm" style="color: #A1A1AA;">Воронки, графики, метрики, активность</p>
+                </div>
+            </a>
+
+            <!-- Flow Editor -->
+            <a href="/editor" class="group">
+                <div class="rounded-xl p-6 transition-all duration-200" style="background: #111111; border: 1px solid #27272A;" onmouseover="this.style.borderColor='#3B82F6'" onmouseout="this.style.borderColor='#27272A'">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="p-3 rounded-lg" style="background: rgba(59, 130, 246, 0.1);">
+                            <svg class="w-6 h-6" style="color: #3B82F6;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011 1v6a1 1 0 01-1 1h14a1 1 0 01-1-1v-6a1 1 0 01-1-1H5a1 1 0 01-1-1z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold" style="color: #FFFFFF;">Редактор сценариев</h3>
+                            <p class="text-sm" style="color: #71717A;">Visual Flow Editor</p>
+                        </div>
+                    </div>
+                    <p class="text-sm" style="color: #A1A1AA;">Создание диалоговых сценариев</p>
+                </div>
+            </a>
+
+            <!-- Database -->
+            <a href="/admin/tables" class="group">
+                <div class="rounded-xl p-6 transition-all duration-200" style="background: #111111; border: 1px solid #27272A;" onmouseover="this.style.borderColor='#3B82F6'" onmouseout="this.style.borderColor='#27272A'">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="p-3 rounded-lg" style="background: rgba(59, 130, 246, 0.1);">
+                            <svg class="w-6 h-6" style="color: #3B82F6;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold" style="color: #FFFFFF;">База данных</h3>
+                            <p class="text-sm" style="color: #71717A;">SQLAdmin</p>
+                        </div>
+                    </div>
+                    <p class="text-sm" style="color: #A1A1AA;">Управление данными</p>
+                </div>
+            </a>
+
+            <!-- API Docs -->
+            <a href="/docs" class="group">
+                <div class="rounded-xl p-6 transition-all duration-200" style="background: #111111; border: 1px solid #27272A;" onmouseover="this.style.borderColor='#3B82F6'" onmouseout="this.style.borderColor='#27272A'">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="p-3 rounded-lg" style="background: rgba(59, 130, 246, 0.1);">
+                            <svg class="w-6 h-6" style="color: #3B82F6;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 19.974 5.754 21 7.5 21S10.832 19.974 12 19.253v13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C13.168 19.974 14.754 21 16.5 21c1.747 0 3.332-1.026 4.5-2.747v-13C19.832 5.477 18.247 5 16.5 5c-1.747 0-3.332.477-4.5 1.253v13C10.832 19.974 9.246 21 7.5 21S4.168 19.974 3 19.253v-13C4.168 5.477 5.754 5 7.5 5z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold" style="color: #FFFFFF;">API Документация</h3>
+                            <p class="text-sm" style="color: #71717A;">Swagger</p>
+                        </div>
+                    </div>
+                    <p class="text-sm" style="color: #A1A1AA;">OpenAPI спецификация</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="rounded-xl p-6" style="background: #111111; border: 1px solid #27272A;">
+            <h2 class="text-lg font-semibold mb-4" style="color: #FFFFFF;">📊 Быстрая статистика</h2>
+            <div id="quick-stats" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="text-center py-4" style="color: #71717A;">Загрузка...</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        fetch('/api/admin/quick-stats')
+            .then(response => response.json())
+            .then(data => {
+                const statsContainer = document.getElementById('quick-stats');
+                statsContainer.innerHTML = `
+                    <div class="rounded-lg p-4" style="background: #1A1A1A; border: 1px solid #27272A;">
+                        <div class="text-2xl font-bold" style="color: #3B82F6;">${data.total_users || 0}</div>
+                        <div class="text-sm mt-1" style="color: #71717A;">Всего пользователей</div>
+                    </div>
+                    <div class="rounded-lg p-4" style="background: #1A1A1A; border: 1px solid #27272A;">
+                        <div class="text-2xl font-bold" style="color: #3B82F6;">${data.active_today || 0}</div>
+                        <div class="text-sm mt-1" style="color: #71717A;">Активных сегодня</div>
+                    </div>
+                    <div class="rounded-lg p-4" style="background: #1A1A1A; border: 1px solid #27272A;">
+                        <div class="text-2xl font-bold" style="color: #3B82F6;">${data.paid_users || 0}</div>
+                        <div class="text-sm mt-1" style="color: #71717A;">Оплатили курс</div>
+                    </div>
+                    <div class="rounded-lg p-4" style="background: #1A1A1A; border: 1px solid #27272A;">
+                        <div class="text-2xl font-bold" style="color: #3B82F6;">${data.total_flows || 0}</div>
+                        <div class="text-sm mt-1" style="color: #71717A;">Сценариев</div>
+                    </div>
+                `;
+            })
+            .catch(error => {
+                console.error('Failed to load quick stats:', error);
+                document.getElementById('quick-stats').innerHTML = `
+                    <div class="col-span-4 text-center py-4" style="color: #71717A;">
+                        Не удалось загрузить статистику
+                    </div>
+                `;
+            });
+    </script>
+</body>
+</html>
